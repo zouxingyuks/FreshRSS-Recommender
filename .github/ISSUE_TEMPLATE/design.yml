@@ -1,0 +1,95 @@
+name: Design
+description: Open a lightweight design discussion before implementation work is split out.
+title: "[Design] "
+labels: ["type:design"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for design discussion, not implementation tracking. Before closing, leave a final comment with the settled conclusion or split follow-up execution issues.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Explain the problem, goal, or decision pressure that makes this design discussion necessary.
+      placeholder: |
+        Problem / goal:
+        Why now:
+        Relevant current behavior or constraints:
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Define what this discussion should and should not decide.
+      value: |
+        In scope:
+        -
+
+        Out of scope:
+        -
+    validations:
+      required: true
+
+  - type: textarea
+    id: options-considered
+    attributes:
+      label: Options Considered
+      description: List realistic options. If there is no serious alternative, explain why.
+      value: |
+        1.
+        2.
+
+        No serious alternative identified because:
+        -
+    validations:
+      required: true
+
+  - type: textarea
+    id: recommended-direction
+    attributes:
+      label: Recommended Direction
+      description: State the current recommended direction, even if provisional.
+      placeholder: |
+        Recommend:
+        Why:
+    validations:
+      required: true
+
+  - type: textarea
+    id: tradeoffs-risks
+    attributes:
+      label: Tradeoffs / Risks
+      description: Capture costs, risks, rejected tradeoffs, and unknowns.
+      placeholder: |
+        Tradeoffs:
+        -
+
+        Risks / unknowns:
+        -
+    validations:
+      required: true
+
+  - type: textarea
+    id: decision-output
+    attributes:
+      label: Expected Decision Output
+      description: Define what must be true before this design issue can close.
+      value: |
+        - [ ] Final comment captures the settled conclusion, or
+        - [ ] Follow-up execution issue(s) are created with enough context to act.
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Link issues, PRs, docs, diagrams, experiments, or related comments.
+      placeholder: |
+        -
+    validations:
+      required: false

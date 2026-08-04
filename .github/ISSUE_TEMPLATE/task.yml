@@ -1,0 +1,71 @@
+name: Task
+description: Plan a concrete implementation task for an internal developer or agent handoff.
+title: "[Task] "
+labels: ["type:task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for concrete implementation work. Write the issue so another developer or agent can pick it up without reconstructing context.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Explain why this work exists and what relevant state or prior decision the assignee needs.
+      placeholder: |
+        Why now?
+        What problem or goal does this support?
+        What prior discussion, issue, or decision matters?
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Define the boundary of the work, including explicit non-goals.
+      value: |
+        In scope:
+        -
+
+        Out of scope:
+        -
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: List observable checks that prove the task is complete.
+      placeholder: |
+        - [ ]
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints-risks
+    attributes:
+      label: Constraints / Risks
+      description: Capture constraints, tradeoffs, edge cases, or likely failure modes.
+      placeholder: |
+        Constraints:
+        -
+
+        Risks:
+        -
+    validations:
+      required: false
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Link issues, PRs, docs, commits, screenshots, logs, or prior comments.
+      placeholder: |
+        -
+    validations:
+      required: false

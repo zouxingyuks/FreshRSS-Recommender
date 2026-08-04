@@ -1,0 +1,100 @@
+name: Bug
+description: Report a broken behavior with enough context for internal debugging and handoff.
+title: "[Bug] "
+labels: ["type:bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this when observed behavior is wrong. Write the issue so another developer or agent can reproduce, diagnose, and verify the fix.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Explain where the bug appears and why it matters.
+      placeholder: |
+        Affected area:
+        Why this matters:
+        Related change or prior discussion:
+    validations:
+      required: true
+
+  - type: textarea
+    id: broken-behavior
+    attributes:
+      label: Broken Behavior
+      description: Describe what happens now and what should happen instead.
+      value: |
+        Actual behavior:
+        -
+
+        Expected behavior:
+        -
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Reproduction Steps
+      description: Provide steps or observed conditions. If not consistently reproducible, say so and document the uncertainty.
+      value: |
+        Steps:
+        1.
+        2.
+        3.
+
+        If not consistently reproducible:
+        Observed under:
+        -
+        Uncertainty:
+        -
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Define the fix boundary, including explicit non-goals.
+      value: |
+        In scope:
+        -
+
+        Out of scope:
+        -
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: List observable checks that prove the bug is fixed.
+      placeholder: |
+        - [ ]
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints-risks
+    attributes:
+      label: Constraints / Risks
+      description: Capture edge cases, regression risks, or environment-specific constraints.
+      placeholder: |
+        -
+    validations:
+      required: false
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Link logs, screenshots, issues, PRs, commits, or related comments.
+      placeholder: |
+        -
+    validations:
+      required: false

@@ -1,0 +1,88 @@
+name: Refactor
+description: Plan an internal refactor with explicit behavior boundaries and validation.
+title: "[Refactor] "
+labels: ["type:refactor"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for structure-only improvement work. Be explicit about behavior preservation so another developer or agent can avoid accidental feature changes.
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Explain why this refactor is needed and what pain it reduces.
+      placeholder: |
+        Current problem:
+        Why refactor instead of feature work:
+        Relevant code / module:
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Define the refactor boundary, including explicit non-goals.
+      value: |
+        In scope:
+        -
+
+        Out of scope:
+        -
+    validations:
+      required: true
+
+  - type: textarea
+    id: behavior-preservation
+    attributes:
+      label: Behavior Preservation
+      description: State what behavior must remain unchanged and whether any behavior change is intentionally allowed.
+      value: |
+        Behavior that must remain unchanged:
+        -
+
+        Intentionally allowed behavior changes:
+        - No intended behavior change.
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation-plan
+    attributes:
+      label: Validation Plan
+      description: Explain how to prove the refactor did not regress behavior.
+      value: |
+        Tests to run:
+        -
+
+        Manual checks:
+        -
+
+        Regression risks:
+        -
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: List observable checks that prove the refactor is complete.
+      placeholder: |
+        - [ ]
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Link issues, PRs, docs, code pointers, or prior comments.
+      placeholder: |
+        -
+    validations:
+      required: false
