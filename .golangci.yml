@@ -1,0 +1,232 @@
+version: "2"
+run:
+  concurrency: 4
+  modules-download-mode: readonly
+  issues-exit-code: 1
+  tests: false
+  allow-parallel-runners: false
+  allow-serial-runners: false
+output:
+  formats:
+    text:
+      path: stdout
+      print-linter-name: true
+      print-issued-lines: true
+  sort-order:
+    - linter
+    - severity
+    - file
+  path-prefix: ""
+linters:
+  default: none
+  enable:
+    - asasalint
+    - asciicheck
+    - bidichk
+    - canonicalheader
+    - contextcheck
+    - cyclop
+    - decorder
+    - dogsled
+    - dupword
+    - durationcheck
+    - errcheck
+    - errchkjson
+    - errname
+    - exhaustive
+    - fatcontext
+    - forbidigo
+    - forcetypeassert
+    - funlen
+    - gocheckcompilerdirectives
+    - gochecknoglobals
+    - gochecknoinits
+    - gochecksumtype
+    - gocognit
+    - goconst
+    - gocritic
+    - gocyclo
+    - godot
+    - gosec
+    - grouper
+    - importas
+    - inamedparam
+    - ineffassign
+    - interfacebloat
+    - lll
+    - maintidx
+    - misspell
+    - mnd
+    - musttag
+    - nakedret
+    - nestif
+    - nilerr
+    - nilnil
+    - nlreturn
+    - nonamedreturns
+    - nosprintfhostport
+    - prealloc
+    - predeclared
+    - protogetter
+    - reassign
+    - recvcheck
+    - revive
+    - sqlclosecheck
+    - staticcheck
+    - unparam
+    - unused
+    - usestdlibvars
+    - varnamelen
+    - wastedassign
+    - whitespace
+  settings:
+    cyclop:
+      max-complexity: 20
+      package-average: 0
+    exhaustive:
+      default-signifies-exhaustive: true
+    funlen:
+      lines: 120
+      statements: -1
+      ignore-comments: true
+    gocognit:
+      min-complexity: 20
+    goconst:
+      match-constant: true
+      min-len: 2
+      min-occurrences: 3
+      numbers: true
+      min: 2
+      max: 2
+      ignore-calls: true
+    gocyclo:
+      min-complexity: 20
+    godot:
+      scope: declarations
+      exclude:
+        - '^fixme:'
+        - '^todo:'
+      capital: false
+      period: true
+    gosec:
+      excludes:
+        - G101
+        - G102
+        - G115
+      severity: medium
+      confidence: medium
+      config:
+        G104:
+          fmt:
+            - Fscanf
+        G111:
+          pattern: custom\.Dir\(\)
+        G301: "0750"
+        G302: "0600"
+        G306: "0600"
+        global:
+          '#nosec': '#my-custom-nosec'
+          audit: true
+          nosec: false
+          show-ignored: true
+      concurrency: 6
+    importas:
+      no-unaliased: false
+      no-extra-aliases: true
+    interfacebloat:
+      max: 10
+    lll:
+      line-length: 150
+      tab-width: 1
+    nlreturn:
+      block-size: 2
+    varnamelen:
+      max-distance: 6
+      min-name-length: 2
+      check-receiver: true
+      check-return: true
+      check-type-param: true
+      ignore-names:
+        - r
+        - "n"
+        - err
+        - p
+        - f
+        - x
+        - k
+        - v
+      ignore-type-assert-ok: true
+      ignore-map-index-ok: true
+      ignore-chan-recv-ok: true
+      ignore-decls:
+        - c echo.Context
+        - t testing.T
+        - f *foo.Bar
+        - e error
+        - i int
+        - const C
+        - T any
+        - m map[string]int
+        - r recover
+        - p pool
+        - r gin.Router
+        - r Router
+        - h *handler
+        - h handler
+        - h *Handler
+        - c *Config
+        - d *Discovery
+        - c *cli
+        - w *Watcher
+        - o *Option
+        - c TLSConfig
+    whitespace:
+      multi-if: true
+      multi-func: true
+  exclusions:
+    rules:
+      - linters:
+          - errcheck
+          - gocyclo
+          - gosec
+        path: _test\.go
+      - linters:
+          - forbidigo
+        path-except: _test\.go
+      - linters:
+          - gosec
+        path: internal/hmac/
+        text: weak cryptographic primitive
+      - linters:
+          - staticcheck
+        text: 'SA9003:'
+      - linters:
+          - lll
+        source: '^//go:generate '
+      - path: (.+)\.go$
+        text: abcdef
+      - linters:
+          - cyclop
+          - goconst
+        path: (.+)_test\.go
+    paths:
+      - .*\.pb\.go$
+      - front/*
+      - docs/*
+      - install/*
+      - .github/*
+      - proto/*
+      - pkg/blog/*
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
+  new-from-rev: master
+  whole-files: true
+  new: false
+  fix: false
+severity:
+  default: warn
+  rules:
+    - linters:
+        - dupl
+      severity: info
