@@ -1,0 +1,49 @@
+// Default Ubuntu-based DevContainer Template.
+// For more customization options, see https://containers.dev/implementors/json_reference
+{
+  name: "Default",
+  image: "ubuntu:24.04",
+  "forwardPorts": [
+    8080,
+    3000
+  ],
+  "portsAttributes": {
+    "8080": {
+      "label": "Go Application",
+      "onAutoForward": "openBrowserOnce"
+    },
+    "3000": {
+      "label": "Frontend / Dev Server",
+      "onAutoForward": "openBrowserOnce"
+    }
+  },
+  "customizations": {
+    "jetbrains": {
+      "backend": "GoLand",
+      "settings": {
+      },
+      "plugins": [
+        "com.intellij.clouds.docker"
+      ]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/go:1": {
+      "version": "1.25.12"
+    },
+    "ghcr.io/roul/devcontainer-features/mise:1": {}
+  },
+  // Comment out to connect as the root user.
+  "remoteUser": "ubuntu",
+  "containerEnv": {
+    "GO111MODULE": "on",
+    "GOPROXY": "https://proxy.golang.org,direct",
+    "MISE_YES": "1",
+  },
+  "postCreateCommand": [
+    "bash",
+    "-c",
+    "mise install && mise exec -- go version && git --version"
+  ]
+}
